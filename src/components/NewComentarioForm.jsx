@@ -1,5 +1,6 @@
 import {useState} from "react";
 import PropTypes from "prop-types";
+import TextInput from "./TextInput.jsx";
 
 NewComentarioForm.prototype = {
     addComentario: PropTypes.func
@@ -18,31 +19,21 @@ export default function NewComentarioForm({addComentario}) {
 
     return (
         <form onSubmit={handleFormSubmit}>
-            <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Digite seu email"
-                    required
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                />
-            </div>
-            <div className="form-group">
-                <label htmlFor="comentario">Comentário</label>
-                <textarea
-                    id="comentario"
-                    name="comentario"
-                    placeholder="Digite seu comentário"
-                    required
-                    value={comentario}
-                    onChange={(event) => setComentario(event.target.value)}
-                >
 
-              </textarea>
-            </div>
+            <TextInput
+                value={email}
+                setValue={setEmail}
+                labalText="E-mail"
+                inputType="email"
+                placeholder="Digite seu e-mail" />
+
+            <TextInput
+                value={comentario}
+                setValue={setComentario}
+                labalText="Comentário"
+                inputType="text"
+                placeholder="Digite seu comentário" />
+
             <button type="submit">Enviar Comentário</button>
         </form>
     )

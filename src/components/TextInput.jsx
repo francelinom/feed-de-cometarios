@@ -11,7 +11,7 @@ TextInput.prototype = {
 export default function TextInput({labalText, inputType, placeholder, value, setValue}) {
     return (
         <div className="form-group">
-            <label htmlFor="email">{labalText}</label>
+            <label htmlFor={labalText}>{labalText}</label>
             <input
                 type={inputType}
                 id={labalText}

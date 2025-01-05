@@ -1,5 +1,6 @@
 import useComentarioColletions from "./hooks/useComentarioColletions";
 import NewComentarioForm from "./components/NewComentarioForm.jsx";
+import Comentario from "./components/Comentario.jsx";
 
 function App() {
     const {formulario, addComentario} = useComentarioColletions();
@@ -21,13 +22,12 @@ function App() {
                                 .slice()
                                 .sort((a, b) => new Date(b?.savedData?.timestamp) - new Date(a?.savedData?.timestamp))
                                 .map((form) => (
-                                <li key={form.id} style={{marginBottom: "15px", borderBottom: "1mm solid black"}}>
-                                    <strong>Email:</strong> {form.email}
-                                    <br/>
-                                    salvo em: {form?.savedData?.timestamp}
-                                    <br/>
-                                    <strong>Comentário:</strong> {form.comentario}
-                                </li>
+                                <Comentario
+                                    key={form.id}
+                                    timestamp={form?.savedData?.timestamp}
+                                    comentario={form.comentario}
+                                    email={form.email}
+                                />
                             ))}
                         </ul>
                 ) : (

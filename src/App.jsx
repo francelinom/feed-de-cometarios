@@ -1,51 +1,14 @@
-import {useState} from "react";
 import useComentarioColletions from "./hooks/useComentarioColletions";
+import NewComentarioForm from "./components/NewComentarioForm.jsx";
 
 function App() {
-    const [comentario, setComentario] = useState("")
-    const [email, setEmail] = useState("")
-
     const {formulario, addComentario} = useComentarioColletions();
-
-    function handleFormSubmit(event) {
-        event.preventDefault()
-        addComentario(comentario, email)
-        setEmail("")
-        setComentario("")
-    }
 
     return (
         <>
             <div className="card">
                 <h2>Enviar Comentário</h2>
-                <form onSubmit={handleFormSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Digite seu email"
-                            required
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="comentario">Comentário</label>
-                        <textarea
-                            id="comentario"
-                            name="comentario"
-                            placeholder="Digite seu comentário"
-                            required
-                            value={comentario}
-                            onChange={(event) => setComentario(event.target.value)}
-                        >
-
-              </textarea>
-                    </div>
-                    <button type="submit">Enviar Comentário</button>
-                </form>
+                <NewComentarioForm addComentario={addComentario} />
             </div>
 
             <hr/>
